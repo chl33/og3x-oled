@@ -10,7 +10,7 @@
     }
   ],
   "dependencies": {
-    "chl33/rt3": "0.0.1",
+    "chl33/og3": "0.0.1",
     "thingpulse/ESP8266 and ESP32 OLED driver for SSD1306 displays": "~4.2.0"
   },
   "license": "MIT",
