@@ -1,19 +1,29 @@
 {
-  "name": "og3x-oled",
-  "version": "0.0.1",
-  "description": "A library for esp projects",
-  "keywords": "esp32, esp8266, oled",
-  "authors": [
+    "name": "og3x-oled",
+    "version": "0.1.0",
+    "description": "Add support for SSD1306 OLED to chl33/og3",
+    "keywords": "esp32, esp8266, oled",
+    "authors": [
+	{
+	    "name": "Chris Lee",
+	    "email": "lee.chris.h@gmail.com",
+	    "url": "https://selectiveappeal.org/",
+	    "maintainer": true
+	}
+    ],
+    "dependencies": {
+	"chl33/og3": "0.1.0",
+	"thingpulse/ESP8266 and ESP32 OLED driver for SSD1306 displays": "~4.2.0"
+    },
+    "export": {
+	"exclude": [".*", "*~", "util/"]
+    },
+    "license": "MIT",
+    "frameworks": "*",
+    "platforms": "espressif8266, espressif32, native",
+    "repository":
     {
-      "name": "Chris Lee",
-      "email": "lee.chris.h@gmail.com"
+	"type": "git",
+	"url": "https://github.com/chl33/og3x-oled"
     }
-  ],
-  "dependencies": {
-    "chl33/og3": "0.0.1",
-    "thingpulse/ESP8266 and ESP32 OLED driver for SSD1306 displays": "~4.2.0"
-  },
-  "license": "MIT",
-  "frameworks": "*",
-  "platforms": "espressif8266, espressif32, native"
 }
