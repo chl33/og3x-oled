@@ -1,4 +1,4 @@
-  # og3x-oled
+# og3x-oled
 
 This is simple OLED support for the [og3](https://github.com/chl33/og3) library for ESP projects using the Arduino framework with [Platformio](https://platformio.org/).
 

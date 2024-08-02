@@ -20,7 +20,8 @@ class OledDisplayRing : public Oled {
   static const char* kName;
 
   OledDisplayRing(ModuleSystem* updater, const char* initial_txt, unsigned switch_time_msec,
-                  FontSize font_size = kSixteenPt);
+                  FontSize font_size = kSixteenPt,
+                  Orientation orientation = Orientation::kFlipVertical);
 
   // Add the callback which will be called when it is its turn.
   using CallbackFn = std::function<void()>;
