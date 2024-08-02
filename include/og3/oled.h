@@ -18,9 +18,13 @@ class Oled : public Module {
     kTenPt = 0,
     kSixteenPt = 1,
   };
+  enum class Orientation {
+    kDefault = 0,
+    kFlipVertical = 1,
+  };
 
   Oled(const char* name, ModuleSystem* updater, const char* initial_txt,
-       FontSize font_size = kSixteenPt);
+       FontSize font_size = kSixteenPt, Orientation orientation = Orientation::kFlipVertical);
 
   void setup();
   void clear();
@@ -32,6 +36,7 @@ class Oled : public Module {
   SSD1306Wire m_display;
 #endif
   const char* m_initial_txt;
+  const Orientation m_orientation;
   FontSize m_font_size;
   int m_start = 0;
   bool m_ok = false;

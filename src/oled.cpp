@@ -6,12 +6,13 @@
 namespace og3 {
 
 Oled::Oled(const char* name, ModuleSystem* modules, const char* initial_txt,
-           Oled::FontSize font_size)
+           Oled::FontSize font_size, Oled::Orientation orientation)
     : Module(name, modules),
 #ifndef NATIVE
       m_display(0x3c, SDA, SCL, GEOMETRY_128_32),
 #endif
       m_initial_txt(initial_txt),
+      m_orientation(orientation),
       m_font_size(font_size) {
   add_init_fn([this]() { setup(); });
 }
@@ -27,7 +28,9 @@ void Oled::setup() {
   }
 #ifndef NATIVE
   m_display.clear();
-  m_display.flipScreenVertically();
+  if (m_orientation == Orientation::kFlipVertical) {
+    m_display.flipScreenVertically();
+  }
   m_display.setTextAlignment(TEXT_ALIGN_LEFT);
   m_display.setFont(ArialMT_Plain_16);
   m_display.drawString(0, 0, m_initial_txt);
