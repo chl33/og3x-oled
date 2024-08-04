@@ -13,8 +13,26 @@ Oled::Oled(const char* name, ModuleSystem* modules, const char* initial_txt,
 #endif
       m_initial_txt(initial_txt),
       m_orientation(orientation),
-      m_font_size(font_size) {
+      m_font_size(font_size),
+      m_sent_font_size(font_size) {
   add_init_fn([this]() { setup(); });
+}
+
+void Oled::_sendFontSize(bool force) {
+#ifndef NATIVE
+  if (!force && (m_font_size == m_sent_font_size)) {
+    return;
+  }
+  switch (m_font_size) {
+    case kTenPt:
+      m_display.setFont(ArialMT_Plain_10);
+      break;
+    case kSixteenPt:
+      m_display.setFont(ArialMT_Plain_16);
+      break;
+  }
+  m_sent_font_size = m_font_size;
+#endif
 }
 
 void Oled::setup() {
@@ -32,7 +50,7 @@ void Oled::setup() {
     m_display.flipScreenVertically();
   }
   m_display.setTextAlignment(TEXT_ALIGN_LEFT);
-  m_display.setFont(ArialMT_Plain_16);
+  _sendFontSize(true);
   m_display.drawString(0, 0, m_initial_txt);
   m_display.display();
 #endif
@@ -55,15 +73,7 @@ void Oled::display(const char* msg) {
   }
 #ifndef NATIVE
   m_display.clear();
-  // m_display.setFont(ArialMT_Plain_16);
-  switch (m_font_size) {
-    case kTenPt:
-      m_display.setFont(ArialMT_Plain_10);
-      break;
-    case kSixteenPt:
-      m_display.setFont(ArialMT_Plain_16);
-      break;
-  }
+  _sendFontSize();
   m_display.drawString(0, 0, msg);
   m_display.display();
 #endif

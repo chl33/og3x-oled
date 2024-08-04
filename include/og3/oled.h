@@ -31,13 +31,17 @@ class Oled : public Module {
   void display(const char* msg);
   void setFontSize(FontSize font_size) { m_font_size = font_size; }
 
+  SSD1306Wire& screen() { return m_display; }
+
  private:
+  void _sendFontSize(bool force = false);
 #ifndef NATIVE
   SSD1306Wire m_display;
 #endif
   const char* m_initial_txt;
   const Orientation m_orientation;
   FontSize m_font_size;
+  FontSize m_sent_font_size;
   int m_start = 0;
   bool m_ok = false;
 };
