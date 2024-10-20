@@ -23,8 +23,14 @@ OledWifiInfo::OledWifiInfo(Tasks* tasks) : Module(OledWifiInfo::kName, tasks->mo
       m_oled->addDisplayFn([this]() {
         if (m_wifi->apMode()) {
           char buf[80];
-          snprintf(buf, sizeof(buf), "AP: %s", m_wifi->board().c_str());
+          static bool s_show_password = false;
+          if (s_show_password && m_wifi->ap_password()) {
+            snprintf(buf, sizeof(buf), "PW: %s", m_wifi->ap_password());
+          } else {
+            snprintf(buf, sizeof(buf), "AP: %s", m_wifi->board().c_str());
+          }
           m_oled->display(buf);
+          s_show_password = !s_show_password;
         } else if (m_wifi->wasConnected()) {
           char buf[80];
           snprintf(buf, sizeof(buf), "IP: %s", m_wifi->ipAddress().c_str());
