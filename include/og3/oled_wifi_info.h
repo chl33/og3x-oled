@@ -17,7 +17,7 @@ class OledWifiInfo : public Module {
  public:
   static const char kName[];
 
-  explicit OledWifiInfo(Tasks* tasks) OG3_NONNULL();
+  explicit OledWifiInfo(Tasks* tasks);
 
  private:
   DependenciesArray<2> m_dependencies{{WifiManager::kName, OledDisplayRing::kName}};
