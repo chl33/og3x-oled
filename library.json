@@ -1,6 +1,6 @@
 {
     "name": "og3x-oled",
-    "version": "0.3.0",
+    "version": "0.3.1",
     "description": "Add support for SSD1306 OLED to chl33/og3",
     "keywords": "esp32, esp8266, oled",
     "authors": [
@@ -13,7 +13,7 @@
     ],
     "dependencies": {
 	"chl33/og3": "~0.3.0",
-	"thingpulse/ESP8266 and ESP32 OLED driver for SSD1306 displays": "~4.2.0"
+	"thingpulse/ESP8266 and ESP32 OLED driver for SSD1306 displays": "~4.6.1"
     },
     "export": {
 	"exclude": [".*", "*~", "util/"]
