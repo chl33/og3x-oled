@@ -1,4 +1,4 @@
-// Copyright (c) 2024 Chris Lee and contibuters.
+// Copyright (c) 2026 Chris Lee and contibuters.
 // Licensed under the MIT license. See LICENSE file in the project root for details.
 
 #include "og3/oled_wifi_info.h"
@@ -21,20 +21,19 @@ OledWifiInfo::OledWifiInfo(Tasks* tasks) : Module(OledWifiInfo::kName, tasks->mo
   add_init_fn([this]() {
     if (m_oled && m_wifi) {
       m_oled->addDisplayFn([this]() {
+        static char s_buf[80];
         if (m_wifi->apMode()) {
-          char buf[80];
           static bool s_show_password = false;
           if (s_show_password && m_wifi->ap_password()) {
-            snprintf(buf, sizeof(buf), "PW: %s", m_wifi->ap_password());
+            snprintf(s_buf, sizeof(s_buf), "PW: %s", m_wifi->ap_password());
           } else {
-            snprintf(buf, sizeof(buf), "AP: %s", m_wifi->board().c_str());
+            snprintf(s_buf, sizeof(s_buf), "AP: %s", m_wifi->board().c_str());
           }
-          m_oled->display(buf);
+          m_oled->display(s_buf);
           s_show_password = !s_show_password;
         } else if (m_wifi->wasConnected()) {
-          char buf[80];
-          snprintf(buf, sizeof(buf), "IP: %s", m_wifi->ipAddress().c_str());
-          m_oled->display(buf);
+          snprintf(s_buf, sizeof(s_buf), "IP: %s", m_wifi->ipAddress().c_str());
+          m_oled->display(s_buf);
         } else {
           m_oled->display("WiFi is off");
         }

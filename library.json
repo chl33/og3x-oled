@@ -1,8 +1,8 @@
 {
     "name": "og3x-oled",
     "version": "0.5.0",
-    "description": "Add support for SSD1306 OLED to chl33/og3",
-    "keywords": "esp32, esp8266, oled",
+    "description": "Add support for SSD1306 128x32 OLED displays to the og3 framework.",
+    "keywords": "iot, esp32, esp8266, oled, ssd1306, display, user-interface",
     "authors": [
 	{
 	    "name": "Chris Lee",
@@ -19,7 +19,7 @@
 	"exclude": [".*", "*~", "util/"]
     },
     "license": "MIT",
-    "frameworks": "*",
+    "frameworks": "arduino",
     "platforms": "espressif8266, espressif32, native",
     "repository":
     {
