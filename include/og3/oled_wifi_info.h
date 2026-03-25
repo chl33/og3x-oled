@@ -3,9 +3,6 @@
 
 #pragma once
 
-#include <og3/compiler_definitions.h>
-#include <og3/dependencies.h>
-#include <og3/ha_dependencies.h>
 #include <og3/wifi_manager.h>
 
 #include <functional>
@@ -28,7 +25,6 @@ class OledWifiInfo : public Module {
   explicit OledWifiInfo(Tasks* tasks);
 
  private:
-  HADependenciesArray<2> m_dependencies{{WifiManager::kName, OledDisplayRing::kName}};
   WifiManager* m_wifi = nullptr;
   OledDisplayRing* m_oled = nullptr;
 };

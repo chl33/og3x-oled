@@ -14,9 +14,11 @@ OledDisplayRing::OledDisplayRing(ModuleSystem* modules, const char* initial_txt,
       m_switch_time_msec(switch_time_msec),
       m_scheduler(
           1, m_switch_time_msec, [this]() { timerCallback(); }, nullptr) {
-  add_link_fn([this](const NameToModule& name_to_module) -> bool {
-    m_scheduler.setTasks(Tasks::get(name_to_module));
-    return true;
+  require(Tasks::kName, &m_tasks);
+  add_init_fn([this]() {
+    if (m_tasks) {
+      m_scheduler.setTasks(m_tasks);
+    }
   });
 }
 

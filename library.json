@@ -12,7 +12,7 @@
 	}
     ],
     "dependencies": {
-	"chl33/og3": "~0.5.0",
+	"og3": "~0.6.0",
 	"thingpulse/ESP8266 and ESP32 OLED driver for SSD1306 displays": "~4.6.1"
     },
     "export": {
