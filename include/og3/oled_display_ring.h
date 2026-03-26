@@ -57,6 +57,7 @@ class OledDisplayRing : public Oled {
   const unsigned m_switch_time_msec;
   unsigned m_callback_index = 0;
   PeriodicTaskScheduler m_scheduler;
+  Tasks* m_tasks = nullptr;
 };
 
 }  // namespace og3
