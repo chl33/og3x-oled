@@ -44,11 +44,6 @@ class OledDisplayRing : public Oled {
    */
   void addDisplayFn(const CallbackFn& fn);
 
-  /** @return Pointer to the OledDisplayRing module instance. */
-  static OledDisplayRing* get(const NameToModule& n2m) {
-    return GetModule<OledDisplayRing>(n2m, kName);
-  }
-
  private:
   /** @brief Internal callback for the periodic timer. */
   void timerCallback();
