@@ -1,6 +1,6 @@
 {
     "name": "og3x-oled",
-    "version": "0.6.0",
+    "version": "0.6.1",
     "description": "Add support for SSD1306 128x32 OLED displays to the og3 framework.",
     "keywords": "iot, esp32, esp8266, oled, ssd1306, display, user-interface",
     "authors": [
@@ -12,7 +12,7 @@
 	}
     ],
     "dependencies": {
-	"og3": "~0.6.0",
+	"og3": "~0.6.1",
 	"thingpulse/ESP8266 and ESP32 OLED driver for SSD1306 displays": "~4.6.1"
     },
     "export": {
